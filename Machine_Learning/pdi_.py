@@ -24,5 +24,8 @@ img = Image.open(img_path)
 
 rgb_image = np.array(img)
 img_gray = rgb_gray(rgb_image)
-
 print(img_gray)
+
+img_gray_pillow = Image.fromarray(img_gray)
+output_img = "C:\\Users\\Fagundez\\workspace\\FEC-2025\\Machine_Learning\\img_gray.jpg"
+img_gray_pillow.save(output_img)
