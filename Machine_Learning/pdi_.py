@@ -19,13 +19,23 @@ def rgb_gray(rgb_image):
             
     return gray_image
 
+def gray_bin(img_gray, limiar = 128):
+    img_bin = np.zeros_like(img_gray, dtype=np.uint8)
+    img_bin[img_gray >= limiar] = 1
+    return img_bin
+
 img_path = "C:\\Users\\Fagundez\\workspace\\FEC-2025\\Machine_Learning\\IMG_20241204_142510 (1).jpg"
 img = Image.open(img_path)
 
 rgb_image = np.array(img)
 img_gray = rgb_gray(rgb_image)
-print(img_gray)
+img_binar = gray_bin(img_gray, limiar=128)
+#print(img_gray)
 
 img_gray_pillow = Image.fromarray(img_gray)
 output_img = "C:\\Users\\Fagundez\\workspace\\FEC-2025\\Machine_Learning\\img_gray.jpg"
 img_gray_pillow.save(output_img)
+vision_bin_img = img_binar*255
+img_binar_pillow = Image.fromarray(vision_bin_img)
+output_img_2 = "C:\\Users\\Fagundez\\workspace\\FEC-2025\\Machine_Learning\\img_bin.jpg"
+img_binar_pillow.save(output_img_2)
