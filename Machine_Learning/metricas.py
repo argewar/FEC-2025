@@ -7,23 +7,17 @@ matrix_c = [
     [0, 0, 0, 0, 69, 0],
     [5, 0, 0, 1, 0, 22]
 ]
-
 for i in range(len(matrix_c)):
     classe = i
-
 # VP
     vp = matrix_c[classe][classe]
-
-# FN: soma da linha da classe, excluindo o VP
+# FN
     fn = sum(matrix_c[classe]) - vp
-
-# FP: soma da coluna da classe, excluindo o VP
+# FP
     fp = sum(row[classe] for i, row in enumerate(matrix_c) if i != classe)
 
 # Soma total da matriz
     total = sum(sum(row) for row in matrix_c)
-
-# VN
     vn = total - (vp + fn + fp)
 
     print(f"Classe {classe}:")
@@ -53,7 +47,7 @@ for i in range(len(matrix_c)):
     else:
         f1_scor = 0.0
 
-    print(f"Sensibilidade (Recall): {sens:.4f}")
+    print(f"Sensibilidade: {sens:.4f}")
     print(f"Especificidade: {espec:.4f}")
     print(f"Precisão: {prec:.4f}")
     print(f"F1-Score: {f1_scor:.4f}")
